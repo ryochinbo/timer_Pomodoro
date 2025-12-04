@@ -1,0 +1,163 @@
+:root {
+    --bg-color: #1a1a1a; /* ダークな背景色 */
+    --main-color: #2c2c2c; /* 主要要素の背景色 */
+    --accent-color: #007bff; /* 青をアクセントカラーに */
+    --text-color: #e0e0e0; /* 明るい文字色 */
+    --shadow-color: rgba(0, 0, 0, 0.4); /* 暗い影 */
+    --border-radius: 12px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    margin: 0;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: var(--text-color); /* 全体の文字色を設定 */
+}
+
+.timer-container,
+.settings-container,
+.controls-container {
+    background-color: var(--main-color);
+    padding: 20px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.timer-display {
+    font-size: 6rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.round-display {
+    font-size: 1.2rem;
+    color: #b0b0b0; /* 明るめのグレー */
+}
+
+.settings-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.setting label {
+    font-size: 0.9rem;
+    color: #c0c0c0; /* 明るめのグレー */
+}
+
+.setting select,
+.setting input[type="number"] {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #444; /* 暗めのボーダー */
+    background-color: #3a3a3a; /* 暗めの入力背景 */
+    color: var(--text-color); /* 明るい文字色 */
+    font-size: 1rem;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 80px; /* inputの幅を調整 */
+    text-align: center;
+    -moz-appearance: textfield; /* Firefoxで矢印を非表示 */
+}
+
+.setting select:hover,
+.setting input[type="number"]:hover {
+    border-color: var(--accent-color);
+}
+
+.setting select:focus,
+.setting input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* 青いシャドウ */
+}
+
+/* input type="number"の矢印をWebkit系ブラウザで非表示 */
+.setting input[type="number"]::-webkit-outer-spin-button,
+.setting input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.controls-container button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    color: #fff;
+}
+
+#start-btn {
+    background-color: var(--accent-color); /* 青 */
+}
+
+#start-btn:hover {
+    background-color: #0069d9; /* 濃い青 */
+}
+
+#stop-btn {
+    background-color: #6c757d; /* グレー */
+}
+
+#stop-btn:hover {
+    background-color: #5a6268; /* 濃いグレー */
+}
+
+#reset-btn {
+    background-color: #dc3545; /* 赤 */
+}
+
+#reset-btn:hover {
+    background-color: #c82333; /* 濃い赤 */
+}
+
+.controls-container button:active {
+    transform: translateY(1px);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+    .timer-display {
+        font-size: 4.5rem;
+    }
+
+    .settings-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .setting select,
+    .setting input[type="number"] {
+        width: 100%;
+    }
+}
